@@ -1,0 +1,32 @@
+.neumorphic-button {
+  border: none;
+  background-color: linear-gradient(
+    309.34deg,
+    #f2f3f6 -13.68%,
+    #e5e6ec 171.92%
+  );
+  box-shadow: -4px -4px 20px #ffffff, 3px 3px 20px rgba(36, 65, 93, 0.302);
+  padding: 9px 12px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #424242;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: translate(1px, 1px);
+  }
+
+  &:active {
+    transform: translate(2px, 2px);
+  }
+}
+
+.neumorphic-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

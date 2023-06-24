@@ -1,0 +1,8 @@
+<button
+  class="neumorphic-button"
+  [ngClass]="{ disabled: disabled }"
+  [disabled]="disabled"
+  (click)="handleClick()"
+>
+  {{ label }}
+</button>

@@ -1,0 +1,65 @@
+.notification-dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 29px 38px;
+  background: #cacbe5;
+  box-shadow: inset rgba(0, 0, 0, 0.1607843137) 0 0 0px 5px;
+}
+
+.notification-dialog-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 33px;
+  line-height: 40px;
+  color: #a09fff;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
+}
+
+.notification-dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  color: #424242;
+}
+
+.notification-dialog-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+}
+
+.notification-dialog-buttons-container button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 18px;
+  border-radius: 9px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  color: #424242;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
+}

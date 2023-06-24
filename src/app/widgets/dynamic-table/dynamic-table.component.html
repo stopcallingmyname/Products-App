@@ -1,0 +1,103 @@
+<div class="dynamic-table" #dynamicTable>
+  <div class="dynamic-table-header">
+    <div class="dynamic-table-header-text-container">
+      <p class="dynamic-table-header-text">{{ title }}</p>
+    </div>
+    <div
+      class="dynamic-table-action-icon-container"
+      *ngIf="(onEditData || onDeleteData) && !isEditing"
+      (click)="toggleActions()"
+    >
+      <i class="bx bxs-edit"></i>
+    </div>
+  </div>
+  <div class="dynamic-table-body">
+    <div class="dynamic-table-content">
+      <table>
+        <thead>
+          <tr
+            cdkDropList
+            (cdkDropListDropped)="onColumnSwapEnd($event)"
+            cdkDropListOrientation="horizontal"
+          >
+            <th
+              *ngFor="let header of headers"
+              class="dynamic-table-data-header"
+              cdkDrag
+              cdkDragLockAxis="x"
+              (mouseup)="onColumnResizeEnd($event, header)"
+            >
+              <div class="drag-handle" cdkDragHandle></div>
+              {{ header.name }}
+            </th>
+            <th
+              *ngIf="isActionsToggled"
+              class="dynamic-table-data-header"
+              style="resize: none"
+            >
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          cdkDropList
+          [cdkDropListData]="data"
+          (cdkDropListExited)="onDataStartTransfer($event)"
+          (cdkDropListDropped)="onDataTransferred($event)"
+        >
+          <tr *ngFor="let item of data" cdkDrag [cdkDragData]="item">
+            <td
+              [ngClass]="{
+                'dynamic-table-cell': true,
+                'dynamic-table-cell-editable': item.isEditMode
+              }"
+              *ngFor="let header of headers"
+            >
+              <textarea
+                wrap="soft"
+                type="text"
+                [ngClass]="{
+                  'dynamic-table-textarea': true,
+                  'dynamic-table-textarea-editable': item.isEditMode
+                }"
+                [attr.readonly]="!item.isEditMode ? 'readonly' : null"
+                class="dynamic-table-textarea"
+                [(ngModel)]="item[header.value]"
+              ></textarea>
+            </td>
+            <td
+              *ngIf="isActionsToggled"
+              style="padding: 10px; border-bottom: 1px dashed #d2d2d2"
+            >
+              <div class="dynamic-table-actions-container">
+                <button
+                  *ngIf="!item.isEditMode && onEditData"
+                  class="dynamic-table-action-button"
+                  (click)="toggleEditMode(item)"
+                >
+                  <i class="bx bxs-edit-alt"></i>
+                </button>
+
+                <button
+                  *ngIf="item.isEditMode"
+                  class="dynamic-table-action-button"
+                  (click)="editAction(item)"
+                >
+                  <i class="bx bx-check" style="color: #b9b2d3"></i>
+                </button>
+
+                <button
+                  *ngIf="onDeleteData"
+                  class="dynamic-table-action-button"
+                  (click)="deleteAction(item)"
+                >
+                  <i class="bx bxs-trash" style="color: #ff9f9f"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

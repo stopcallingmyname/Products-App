@@ -1,0 +1,26 @@
+<p *ngIf="loading" style="text-align: center; font-size: large">Loading..</p>
+
+<div class="data-container" #dataContainer cdkDropListGroup>
+  <app-products-data
+    style="flex: auto"
+    [ngStyle]="{ 'width.px': this.leftTableWidth }"
+    #leftTable
+  ></app-products-data>
+  <div
+    #separator
+    class="separator"
+    (mousedown)="onSeparatorDragStart($event)"
+  ></div>
+  <app-catalog-products-data
+    style="flex: auto"
+    [ngStyle]="{ 'width.px': this.rightTableWidth }"
+    #rightTable
+  ></app-catalog-products-data>
+</div>
+
+<app-button
+  class="neo-button"
+  label="Clear LS"
+  (click)="clearLS()"
+  [disabled]="false"
+></app-button>

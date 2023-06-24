@@ -1,0 +1,17 @@
+<ng-container *ngIf="products$ | async as products">
+  <app-dynamic-table
+    #dynamicTable
+    style="flex: auto"
+    [tableId]="'1'"
+    [title]="'Product'"
+    [data]="
+      products | tablecolumns : ['name', 'productType', 'description', 'id']
+    "
+    [headerNames]="['Name', 'Type', 'Description']"
+    [onCreateData]="onCreateProduct"
+    [onEditData]="onEditProduct"
+    [onDeleteData]="onDeleteProduct"
+    [onTransferData]="onTransferProduct"
+  >
+  </app-dynamic-table>
+</ng-container>
